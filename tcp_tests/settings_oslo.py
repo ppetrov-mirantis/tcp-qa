@@ -123,6 +123,17 @@ opencontrail_opts = [
            default=_default_opencontrail_prepare_tests_steps_path),
 ]
 
+# Access credentials to a ready K8S cluster
+k8s_opts = [
+    ct.Cfg('kube_admin_user', ct.String(),
+           help="", default="root"),
+    ct.Cfg('kube_admin_pass', ct.String(),
+           help="", default="changeme"),
+    ct.Cfg('kube_host', ct.String(),
+           help="", default="0.0.0.0"),
+]
+
+
 _group_opts = [
     ('hardware', hardware_opts),
     ('underlay', underlay_opts),
@@ -133,6 +144,7 @@ _group_opts = [
     ('openstack_deploy', openstack_deploy_opts),
     ('openstack', openstack_opts),
     ('opencontrail', opencontrail_opts),
+    ('k8s', k8s_opts),
 ]
 
 
@@ -177,6 +189,9 @@ def register_opts(config):
     config.register_group(cfg.OptGroup(name='opencontrail',
                           title="Options for Juniper contrail-tests", help=""))
     config.register_opts(group='opencontrail', opts=opencontrail_opts)
+    config.register_group(cfg.OptGroup(name='k8s',
+                          title="K8s config and credentials", help=""))
+    config.register_opts(group='k8s', opts=k8s_opts)
     return config
 
 

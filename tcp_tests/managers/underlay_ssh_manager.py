@@ -330,12 +330,17 @@ class UnderlaySSHManager(object):
         with self.remote(node_name=host) as remote:
             remote.upload(source, destination)
 
-    def get_random_node(self):
+    def get_random_node(self, list_range=None):
         """Get random node name
+        :param list_range: range of nodes to iterate like [1,2]
 
         :return: str, name of node
         """
-        return random.choice(self.node_names())
+        if list_range:
+            all_nodes = self.node_names()
+            return random.choice(all_nodes[list_range[0]:list_range[-1]])
+        else:
+            return random.choice(self.node_names())
 
     def yaml_editor(self, file_path, node_name=None, host=None,
                     address_pool=None):

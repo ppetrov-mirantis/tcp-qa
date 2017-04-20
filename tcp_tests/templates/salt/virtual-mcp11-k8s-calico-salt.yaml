@@ -1,4 +1,4 @@
-  {% from 'mcp-fuel-aio.jinja' import HOSTNAME_CFG01 with context %}
+  {% from 'virtual-mcp11-k8s-calico.jinja' import HOSTNAME_CFG01 with context %}
 
 # Install salt to the config node
 
