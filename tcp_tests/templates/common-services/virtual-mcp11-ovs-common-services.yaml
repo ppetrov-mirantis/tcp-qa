@@ -24,12 +24,24 @@
   retry: {count: 1, delay: 5}
   skip_fail: false
 
-- description: Setup glusterfs on primary controller
-  cmd: salt --hard-crash --state-output=mixed --state-verbose=False
-    -C 'I@glusterfs:server' state.sls glusterfs.server.setup -b 1
+- description:Install on ctl01
+  cmd: salt --hard-crash --state-output=mixed --state-verbose=False "ctl01*" state.sls glusterfs.server.setup
   node_name: {{ HOSTNAME_CFG01 }}
   retry: {count: 1, delay: 5}
   skip_fail: false
+
+- description:Install on ctl02
+  cmd: salt --hard-crash --state-output=mixed --state-verbose=False "ctl02*" state.sls glusterfs.server.setup
+  node_name: {{ HOSTNAME_CFG01 }}
+  retry: {count: 1, delay: 5}
+  skip_fail: false
+
+- description:Install on ctl03
+  cmd: salt --hard-crash --state-output=mixed --state-verbose=False "ctl03*" state.sls glusterfs.server.setup
+  node_name: {{ HOSTNAME_CFG01 }}
+  retry: {count: 1, delay: 5}
+  skip_fail: false
+
 
 - description: Check the gluster status
   cmd: salt --hard-crash --state-output=mixed --state-verbose=False
