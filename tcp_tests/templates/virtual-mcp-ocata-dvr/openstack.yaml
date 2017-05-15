@@ -1,4 +1,6 @@
-{% from 'virtual-mcp-ocata-dvr/underlay.yaml' import HOSTNAME_CFG01 with context %}
+{% from 'underlay/virtual-mcp-ocata-dvr.yaml' import HOSTNAME_CFG01 with context %}
+{% from 'salt/virtual-mcp-ocata-dvr-salt.yaml' import IPV4_NET_EXTERNAL_PREFIX with context %}
+{% from 'salt/virtual-mcp-ocata-dvr-salt.yaml' import IPV4_NET_TENANT_PREFIX with context %}
 
 # Install OpenStack control services
 
