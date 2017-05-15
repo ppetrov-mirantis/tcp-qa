@@ -12,7 +12,10 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-class OpenContrailManager(object):
+from tcp_tests.managers.execute_commands import ExecuteCommandsMixin
+
+
+class OpenContrailManager(ExecuteCommandsMixin):
     """docstring for OpenstackManager"""
 
     __config = None
@@ -23,21 +26,22 @@ class OpenContrailManager(object):
         self.__config = config
         self.__underlay = underlay
         self.__openstack_actions = openstack_deployed
-        super(OpenContrailManager, self).__init__()
+        super(OpenContrailManager, self).__init__(
+            config=config, underlay=underlay)
 
-    def prepare_tests(commands):
-        self.__underlay.execute_commands(commands=commands,
-                                         label="Prepare Juniper contrail-test")
+    def prepare_tests(self, commands):
+        self.execute_commands(commands=commands,
+                              label="Prepare Juniper contrail-test")
 
-    def run_tests(tags='', features=''):
+    def run_tests(self, tags='', features=''):
         cmd = "salt 'ctl01*' grains.get fqdn|tail -n1"
         result = self.__underlay.check_call(
             cmd, host=self.__config.salt.salt_master_host)
 
         ctl01_name = result['stdout'].strip()
 
-
-        cmd = '. /etc/contrail/openstackrc; cd /opt/contrail-test; ./run_tests.sh'
+        cmd = '. /etc/contrail/openstackrc; ' \
+              'cd /opt/contrail-test; ./run_tests.sh'
         if tags != '':
             cmd += ' --tags ' + tags
 
