@@ -5,6 +5,10 @@
 {% set SALT_MODELS_REPOSITORY = os_env('SALT_MODELS_REPOSITORY','https://github.com/ppetrov-mirantis/mcp-virtual-lab-vlan') %}
 # Other salt model repository parameters see in shared-salt.yaml
 
+# Path to the context files used to render Cluster and Environment models
+{%- set CLUSTER_CONTEXT_NAME = 'salt-context-cookiecutter-openstack_ovs_dvr_vxlan.yaml' %}
+{%- set ENVIRONMENT_CONTEXT_NAMES = ['salt-context-environment.yaml'] %}
+
 {% import 'shared-salt.yaml' as SHARED with context %}
 
 {{ SHARED.MACRO_INSTALL_SALT_MASTER() }}
