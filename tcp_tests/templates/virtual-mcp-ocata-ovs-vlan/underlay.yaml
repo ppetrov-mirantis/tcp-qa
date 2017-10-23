@@ -145,7 +145,8 @@ template:
           tenant:
             address_pool: tenant-pool01
             dhcp: true
-            phys_dev: !os_env BAREMETAL_TENANT_IFACE, eno2
+            parent_iface:
+              phys_dev: !os_env BAREMETAL_TENANT_IFACE, eno2
 
           external:
             address_pool: external-pool01
