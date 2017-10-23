@@ -299,83 +299,83 @@ template:
               interfaces: *interfaces
               network_config: *network_config
 
-          - name: {{ HOSTNAME_MON01 }}
-            role: salt_minion
-            params:
-              vcpu: !os_env SLAVE_NODE_CPU, 3
-              memory: !os_env SLAVE_NODE_MEMORY, 2048
-              boot:
-                - hd
-              cloud_init_volume_name: iso
-              cloud_init_iface_up: ens3
-              volumes:
-                - name: system
-                  capacity: !os_env NODE_VOLUME_SIZE, 150
-                  backing_store: cloudimage1604
-                  format: qcow2
-                - name: iso  # Volume with name 'iso' will be used
-                             # for store image with cloud-init metadata.
-                  capacity: 1
-                  format: raw
-                  device: cdrom
-                  bus: ide
-                  cloudinit_meta_data: *cloudinit_meta_data
-                  cloudinit_user_data: *cloudinit_user_data_1604
+          # - name: {{ HOSTNAME_MON01 }}
+          #   role: salt_minion
+          #   params:
+          #     vcpu: !os_env SLAVE_NODE_CPU, 3
+          #     memory: !os_env SLAVE_NODE_MEMORY, 2048
+          #     boot:
+          #       - hd
+          #     cloud_init_volume_name: iso
+          #     cloud_init_iface_up: ens3
+          #     volumes:
+          #       - name: system
+          #         capacity: !os_env NODE_VOLUME_SIZE, 150
+          #         backing_store: cloudimage1604
+          #         format: qcow2
+          #       - name: iso  # Volume with name 'iso' will be used
+          #                    # for store image with cloud-init metadata.
+          #         capacity: 1
+          #         format: raw
+          #         device: cdrom
+          #         bus: ide
+          #         cloudinit_meta_data: *cloudinit_meta_data
+          #         cloudinit_user_data: *cloudinit_user_data_1604
 
-              interfaces: *interfaces
-              network_config: *network_config
+          #     interfaces: *interfaces
+          #     network_config: *network_config
 
-          - name: {{ HOSTNAME_MON02 }}
-            role: salt_minion
-            params:
-              vcpu: !os_env SLAVE_NODE_CPU, 3
-              memory: !os_env SLAVE_NODE_MEMORY, 2048
-              boot:
-                - hd
-              cloud_init_volume_name: iso
-              cloud_init_iface_up: ens3
-              volumes:
-                - name: system
-                  capacity: !os_env NODE_VOLUME_SIZE, 150
-                  backing_store: cloudimage1604
-                  format: qcow2
-                - name: iso  # Volume with name 'iso' will be used
-                             # for store image with cloud-init metadata.
-                  capacity: 1
-                  format: raw
-                  device: cdrom
-                  bus: ide
-                  cloudinit_meta_data: *cloudinit_meta_data
-                  cloudinit_user_data: *cloudinit_user_data_1604
+          # - name: {{ HOSTNAME_MON02 }}
+          #   role: salt_minion
+          #   params:
+          #     vcpu: !os_env SLAVE_NODE_CPU, 3
+          #     memory: !os_env SLAVE_NODE_MEMORY, 2048
+          #     boot:
+          #       - hd
+          #     cloud_init_volume_name: iso
+          #     cloud_init_iface_up: ens3
+          #     volumes:
+          #       - name: system
+          #         capacity: !os_env NODE_VOLUME_SIZE, 150
+          #         backing_store: cloudimage1604
+          #         format: qcow2
+          #       - name: iso  # Volume with name 'iso' will be used
+          #                    # for store image with cloud-init metadata.
+          #         capacity: 1
+          #         format: raw
+          #         device: cdrom
+          #         bus: ide
+          #         cloudinit_meta_data: *cloudinit_meta_data
+          #         cloudinit_user_data: *cloudinit_user_data_1604
 
-              interfaces: *interfaces
-              network_config: *network_config
+          #     interfaces: *interfaces
+          #     network_config: *network_config
 
-          - name: {{ HOSTNAME_MON03 }}
-            role: salt_minion
-            params:
-              vcpu: !os_env SLAVE_NODE_CPU, 3
-              memory: !os_env SLAVE_NODE_MEMORY, 2048
-              boot:
-                - hd
-              cloud_init_volume_name: iso
-              cloud_init_iface_up: ens3
-              volumes:
-                - name: system
-                  capacity: !os_env NODE_VOLUME_SIZE, 150
-                  backing_store: cloudimage1604
-                  format: qcow2
-                - name: iso  # Volume with name 'iso' will be used
-                             # for store image with cloud-init metadata.
-                  capacity: 1
-                  format: raw
-                  device: cdrom
-                  bus: ide
-                  cloudinit_meta_data: *cloudinit_meta_data
-                  cloudinit_user_data: *cloudinit_user_data_1604
+          # - name: {{ HOSTNAME_MON03 }}
+          #   role: salt_minion
+          #   params:
+          #     vcpu: !os_env SLAVE_NODE_CPU, 3
+          #     memory: !os_env SLAVE_NODE_MEMORY, 2048
+          #     boot:
+          #       - hd
+          #     cloud_init_volume_name: iso
+          #     cloud_init_iface_up: ens3
+          #     volumes:
+          #       - name: system
+          #         capacity: !os_env NODE_VOLUME_SIZE, 150
+          #         backing_store: cloudimage1604
+          #         format: qcow2
+          #       - name: iso  # Volume with name 'iso' will be used
+          #                    # for store image with cloud-init metadata.
+          #         capacity: 1
+          #         format: raw
+          #         device: cdrom
+          #         bus: ide
+          #         cloudinit_meta_data: *cloudinit_meta_data
+          #         cloudinit_user_data: *cloudinit_user_data_1604
 
-              interfaces: *interfaces
-              network_config: *network_config
+          #     interfaces: *interfaces
+          #     network_config: *network_config
 
           - name: {{ HOSTNAME_PRX01 }}
             role: salt_minion
